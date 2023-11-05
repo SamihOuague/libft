@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 02:38:16 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/05 06:22:45 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/05 05:25:29 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 06:10:40 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, int n)
-{
-	int		i;
+void	ft_putchar_fd(int c, int fd);
 
-	i = 0;
-	while (i < n)
+void	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int	nb;
+	unsigned int	mod;	
+
+	nb = n;
+	if (n < 0)
 	{
-		*(char *)(s + i) = '\0';
-		i++;
+		nb = -n;
+		ft_putchar_fd('-', fd);
 	}
+	mod = nb % 10;
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd(mod + '0', fd);
 }
 /*
 #include <stdio.h>
-int	main()
-{
-	char	tab[5] = "abcd";
+#include <stdlib.h>
 
-	printf("%s\n", tab);
-	ft_bzero(tab, 5);
-	printf("%s\n", tab);
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		return (1);
+	ft_putnbr_fd(atoi(argv[1]), 1);
+	ft_putchar_fd('\n', 1);
 	return (0);
 }
 */

@@ -1,35 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 02:38:16 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/05 06:22:45 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/05 01:53:20 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 02:04:02 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, int n)
+#include <stdlib.h>
+
+char	ft_strlen(char *str);
+
+char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 {
+	char	*str;
+	int		len;
 	int		i;
 
+	len = ft_strlen(s);
+	str = malloc(sizeof(char) * len + 1);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		*(char *)(s + i) = '\0';
+		*(str + i) = (*f)(i, *(s + i));
 		i++;
 	}
+	*(str + i) = '\0';
+	return (str);
 }
 /*
-#include <stdio.h>
-int	main()
+char	rot_one(unsigned int index, char c)
 {
-	char	tab[5] = "abcd";
+	return (c + 3);
+}
 
-	printf("%s\n", tab);
-	ft_bzero(tab, 5);
-	printf("%s\n", tab);
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		return (0);
+	printf("%s\n", ft_strmapi(argv[1], &rot_one));
 	return (0);
 }
 */

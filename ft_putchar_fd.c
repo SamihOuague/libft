@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 02:38:16 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/05 06:22:45 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/05 04:55:36 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 06:25:39 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, int n)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		i;
-
-	i = 0;
-	while (i < n)
-	{
-		*(char *)(s + i) = '\0';
-		i++;
-	}
+	write(fd, &c, 1);
 }
 /*
-#include <stdio.h>
-int	main()
+int	main(int argc, char **argv)
 {
-	char	tab[5] = "abcd";
+	int	file;
 
-	printf("%s\n", tab);
-	ft_bzero(tab, 5);
-	printf("%s\n", tab);
+	if (argc != 2)
+		return (1);
+	file = open(argv[1], O_WRONLY);
+	ft_putchar_fd(argv[1][0], file);
 	return (0);
 }
 */

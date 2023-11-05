@@ -6,6 +6,11 @@
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:13:37 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/02 02:24:24 by souaguen         ###   ########.fr       */
+/*   Updated: 2023/11/05 06:25:52 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
