@@ -6,14 +6,11 @@
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 04:44:03 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/05 01:09:55 by souaguen         ###   ########.fr       */
+/*   Updated: 2023/11/05 07:20:17 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-char	*ft_substr(char *s, unsigned int start, int len);
+#include "libft.h"
 
 static int	next_sep(char *s, char c)
 {

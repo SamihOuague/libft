@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 02:35:14 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/02 02:37:33 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/05 05:14:47 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 06:52:52 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *s, int c, int n)
+#include "libft.h"
+
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
-	while (i < n)
+	while (*(s + i) != '\0')
 	{
-		*(s + i) = c;
+		ft_putchar_fd(*(s + i), fd);
 		i++;
 	}
-	return (s);
 }
+/*
+int	main(int argc, char **argv)
+{
+	if (argc != 2)
+		return (0);
+	ft_putstr_fd(argv[1], 1);
+	ft_putstr_fd("\n", 1);
+	return (0);
+}
+*/

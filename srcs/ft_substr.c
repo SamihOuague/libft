@@ -6,7 +6,7 @@
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 02:27:49 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/04 03:00:15 by souaguen         ###   ########.fr       */
+/*   Updated: 2023/11/05 07:27:38 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char	*ft_substr(char *s, unsigned int start, int len)
 {
-	char	*str;
-	int		i;
+	char			*str;
+	unsigned int	i;
 
 	i = 0;
-	if (start >= len)
+	if (start >= (unsigned int) len)
 		return ('\0');
 	str = malloc((len - start) * sizeof(char) + 1);
-	while (i < (len - start) && *(s + i) != '\0')
+	while (i < ((unsigned int) len - start) && *(s + i) != '\0')
 	{
 		*(str + i) = *(s + (start + i));
 		i++;

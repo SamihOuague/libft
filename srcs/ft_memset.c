@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/05 05:19:19 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/05 05:24:27 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/02 02:35:14 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 06:34:10 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putstr_fd(char *s, int fd);
-
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memset(void *s, int c, int n)
 {
-	ft_putstr_fd(s, fd);
-	ft_putstr_fd("\n", fd);
-}
+	int	i;
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		return (1);
-	ft_putendl_fd(argv[1], 1);
-	return (0);
+	i = 0;
+	while (i < n)
+	{
+		*(char *)(s + i) = c;
+		i++;
+	}
+	return (s);
 }
