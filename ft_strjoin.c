@@ -6,7 +6,7 @@
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 03:01:03 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/04 03:12:44 by souaguen         ###   ########.fr       */
+/*   Updated: 2023/11/04 04:41:17 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len_1 = ft_strlen(s1);
 	len_2 = ft_strlen(s2);
 	if ((len_1 + len_2) == 0)
-		return '\0';
+		return ('\0');
 	str = malloc(sizeof(char) * (len_1 + len_2) + 1);
 	i = 0;
 	while (i < (len_1 + len_2))

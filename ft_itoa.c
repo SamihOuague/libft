@@ -1,48 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: souaguen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 02:15:16 by  souaguen         #+#    #+#             */
-/*   Updated: 2023/11/04 04:41:31 by souaguen         ###   ########.fr       */
+/*   Created: 2023/11/05 01:10:14 by  souaguen         #+#    #+#             */
+/*   Updated: 2023/11/05 01:44:47 by souaguen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_strlen(char *str);
-
-char	*ft_strdup(char *s)
+static int	nbr_len(int n)
 {
-	char	*str;
-	int		len;
-	int		i;
+	unsigned int	len;
+	unsigned int	i;
 
-	len = ft_strlen(s);
-	str = malloc(sizeof(char) * len + 1);
-	i = 0;
-	while (i < len)
+	i = n;
+	len = 0;
+	if (n < 0)
 	{
-		*(str + i) = *(s + i);
+		i = -1 * n;
+		len++;
+	}
+	while (i > 0)
+	{
+		i = i / 10;
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	unsigned int	c;
+	unsigned int	i;
+	char			*str;
+	int				len;
+
+	len = nbr_len(n);
+	str = malloc((sizeof(char) * len) + 1);
+	i = 0;
+	if (n < 0)
+	{
+		c = -1 * n;
+		*(str + i) = '-';
 		i++;
+	}
+	else
+		c = n;
+	if (n >= 0)
+		len--;
+	while (c > 0)
+	{
+		*(str + (len - i++)) = (c % 10) + '0';
+		c = c / 10;
 	}
 	*(str + i) = '\0';
 	return (str);
 }
-/*
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 		return (1);
-	char	*s;
-
-	s = ft_strdup(argv[1]);
-	printf("%s\n", s);
-	printf("%p\n%p\n", s, argv[1]);
+	printf("%s\n", ft_itoa(atoi(argv[1])));
 	return (0);
 }
-*/
